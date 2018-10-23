@@ -1,0 +1,31 @@
+{
+  "name": "auto-tabs",
+  "version": "1.0.0",
+  "description": "Auto generate tabs from headings or other elements",
+  "main": "autotabs.js",
+  "dependencies": {
+    "uglify-js": "^3.4.9"
+  },
+  "devDependencies": {
+    "babel-minify": "^0.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:js": "minify autotabs.js --outFile autotabs.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksaanen/auto-tabs.git"
+  },
+  "keywords": [
+    "tabs",
+    "wordpress",
+    "javascript"
+  ],
+  "author": "Kevin Saanen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ksaanen/auto-tabs/issues"
+  },
+  "homepage": "https://github.com/ksaanen/auto-tabs#readme"
+}
