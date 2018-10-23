@@ -6,6 +6,12 @@
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   
@@ -50,9 +56,23 @@
 
       let q = document.querySelectorAll('.content h5');
       let lastItem = q[(q.length - 1)];
+      let tabsContainer;
+
+      function activateTab(index) {
+        let tabs = tabsContainer.querySelectorAll('.nav-link');
+        q.forEach((el, i) => {
+          if (i === index) {
+            tabs[i].className = 'nav-link active';
+            el.parentNode.className = 'active p-3';
+          } else {
+            tabs[i].className = 'nav-link';
+            el.parentNode.className = 'hidden';
+          }
+        });
+      }
 
       function createTabs(q) {
-        let tabsContainer = document.createElement('ul');
+        tabsContainer = document.createElement('ul');
         tabsContainer.className = 'nav nav-tabs';
 
         q.forEach((el, index) => {
@@ -62,6 +82,9 @@
           let link = document.createElement('a');
           link.className = 'nav-link';
           link.innerText = el.innerText;
+          link.addEventListener('click', function(){
+            activateTab(index);
+          });
 
           tab.append(link);
           tabsContainer.append(tab);
@@ -85,10 +108,22 @@
             selector = wrapper.nextSibling;
           }
         }
+        else if (el === lastItem) {
+          let selector = el.nextSibling;
+          let wrapper = document.createElement('div');
 
+          el.parentNode.insertBefore(wrapper, el);
+          wrapper.append(el);
+
+          while(selector !== null) {
+            wrapper.append(selector);
+            selector = wrapper.nextSibling;
+          }
+        }
       });
 
       createTabs(q);
+      activateTab(0);
 
     })();
   </script>
