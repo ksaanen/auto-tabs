@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:js": "minify autotabs.js --outFile autotabs.min.js",
-    "build:sass": "node-sass scss/index.scss ./autotabs.css",
+    "build:sass": "node-sass scss/index.scss ./autotabs.css --output-style compressed",
     "build": "npm run build:js && npm run build:sass"
   },
   "repository": {
