@@ -4,6 +4,8 @@
   "description": "Auto generate tabs from headings or other elements",
   "main": "autotabs.js",
   "dependencies": {
+    "bootstrap": "^4.1.3",
+    "node-sass": "^4.9.4",
     "uglify-js": "^3.4.9"
   },
   "devDependencies": {
@@ -11,7 +13,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:js": "minify autotabs.js --outFile autotabs.min.js"
+    "build:js": "minify autotabs.js --outFile autotabs.min.js",
+    "build:sass": "node-sass scss/index.scss ./autotabs.css",
+    "build": "npm run build:js && npm run build:sass"
   },
   "repository": {
     "type": "git",
